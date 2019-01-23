@@ -30,7 +30,7 @@ return `
 }
 
 // Function to handle clicks on Create button:
-const clickHandler = (event) => {
+const createClickHandler = (event) => {
     counter++;
     let textInput = document.querySelector("#text--area").value;
     let newCard = cardFactory(textInput);
@@ -38,11 +38,16 @@ const clickHandler = (event) => {
     cardContainer.innerHTML += newCard;
 }
 
+// Function to remove a card when it's Delete button is clicked:
+const deleteCard = () => {
+    let id = event.target.id.split("--")[1];
+    let cardToRemove = document.querySelector(`#card--${id}`);
+    cardContainer.removeChild(cardToRemove);   
+}
 
 // Add an event listener on Create button to capture text area input & turn it into a new card:
-createButton.addEventListener("click", clickHandler);
+createButton.addEventListener("click", createClickHandler);
 
-
-
-
+// Add event listener on Delete buttons:
+cardContainer.addEventListener("click", deleteCard)
 
