@@ -40,9 +40,11 @@ const createClickHandler = (event) => {
 
 // Function to remove a card when it's Delete button is clicked:
 const deleteCard = () => {
-    let id = event.target.id.split("--")[1];
-    let cardToRemove = document.querySelector(`#card--${id}`);
-    cardContainer.removeChild(cardToRemove);   
+    if (event.target.nodeName === "BUTTON") {
+        let id = event.target.id.split("--")[1];
+        let cardToRemove = document.querySelector(`#card--${id}`);
+        cardContainer.removeChild(cardToRemove);   
+    }
 }
 
 // Add an event listener on Create button to capture text area input & turn it into a new card:
